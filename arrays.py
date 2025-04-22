@@ -18,16 +18,14 @@ class ListaDeCompras:
 
     def listar_itens(self):
         for i in range(len(self.itens)):
-            print(f"{self.itens[i]}: {self.quantidades[i]}")
+            print(f"[{self.itens[i]}: {self.quantidades[i]}]")
 
 
 lista = ListaDeCompras()
 
-adicionar_item = input("Digite o nome do item: ")
-adicionar_qtd = input("Digite a quantidade do item: ")
-lista.adicionar_item(adicionar_item, adicionar_qtd)
+lista.adicionar_item("Arroz", 5)
+lista.adicionar_item("Feijao", 5)
 
-remover_item = input("Digite o nome do item que deseja remover: ")
-lista.remover_itens(remover_item)
+lista.remover_itens("Arroz")
 
 lista.listar_itens()

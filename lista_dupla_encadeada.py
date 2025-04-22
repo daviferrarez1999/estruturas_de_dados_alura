@@ -57,7 +57,7 @@ class ListaDuplamenteEncadeada:
 
         while no is not None:
             if no.codigo == codigo:
-                print(f"O produto foi encontrado: [Nome: {no.nome}, Codigo: {no.codigo}, Preco: R$ {no.preco}, Quantidade em estoque: {no.qtd_estoque}]")
+                print(f"O produto foi encontrado: [Nome: {no.nome}, Codigo: {no.codigo}, Preco: R$ {no.preco:.2f}, Quantidade em estoque: {no.qtd_estoque}]")
                 return
             no = no.proximo
 
@@ -77,11 +77,11 @@ class ListaDuplamenteEncadeada:
                     no.proximo.anterior = no.anterior
                 else:
                     self.tail = no.anterior
-               
+             
                 self.quantidade -= 1
-                print("Produto removido com sucesso!")
+                print(f"{no.nome} removido com sucesso!")         
                 return
-          
+  
             no = no.proximo
 
         print("O produto nao foi encontrado")
@@ -99,33 +99,14 @@ class ListaDuplamenteEncadeada:
 
 lista_produtos = ListaDuplamenteEncadeada()
 
-adicionar_nome_inicio = input("Digite o nome do produto: ")
-adicionar_codigo_inicio = input("Digite o codigo do produto: ")
-adicionar_preco_inicio = input("Digite o preco do produto: ")
-adicionar_qtd_estoque_inicio = input("Digite a quantidade em estoque do produto: ")
-lista_produtos.adicionar_produto_head(adicionar_nome_inicio, adicionar_codigo_inicio, adicionar_preco_inicio, adicionar_qtd_estoque_inicio)
+lista_produtos.adicionar_produto_head("Arroz", 1, 15.00, 20)
 
-adicionar_nome_fim = input("Digite o nome do produto: ")
-adicionar_codigo_fim = input("Digite o codigo do produto: ")
-adicionar_preco_fim = input("Digite o preco do produto: ")
-adicionar_qtd_estoque_fim = input("Digite a quantidade em estoque do produto: ")
-lista_produtos.adicionar_produto_tail(adicionar_nome_fim, adicionar_codigo_fim, adicionar_preco_fim, adicionar_qtd_estoque_fim)
+lista_produtos.adicionar_produto_tail("Feijao", 2, 10.00, 30)
 
-codigo_produto = input("Digite o codigo do produto que deseja atualizar o estoque: ")
-no = lista_produtos.head
-while no is not None:
-    if no.codigo == codigo_produto:
-        nova_quantidade = input("Digite a nova quantidade em estoque: ")
-        lista_produtos.atualizar_estoque(codigo_produto, nova_quantidade)
-        break
-    no = no.proximo
-else:
-    print("Produto nao encontrado")
+lista_produtos.atualizar_estoque(1, 25)
 
-busca_produto = input("Digite o codigo do produto que deseja buscar: ")
-lista_produtos.buscar_produto(busca_produto)
+lista_produtos.buscar_produto(2)
 
-remover_produtos = input("Digite o id do produto que deseja remover: ")
-lista_produtos.remover_produto(remover_produtos)
+lista_produtos.remover_produto(1)
 
 print(lista_produtos)

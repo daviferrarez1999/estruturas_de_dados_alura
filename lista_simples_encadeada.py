@@ -15,7 +15,7 @@ class ListaPacientes:
 
     def adicionar_paciente_tail(self, nome, id, estado_saude) -> None:
         novo_no = Pacientes(nome, id, estado_saude)
-         
+
         if self.head is None:
             novo_no.proximo = self.head
             self.head = novo_no
@@ -63,17 +63,10 @@ class ListaPacientes:
 
 lista_pacientes = ListaPacientes()
 
-adicionar_nome_inicio = input("Digite o nome do paciente: ")
-adicionar_id_inicio = input("Digite o id do paciente: ")
-adicionar_estado_saude_inicio = input("Digite o estado de saude do paciente: ")
-lista_pacientes.adicionar_paciente_head(adicionar_nome_inicio, adicionar_id_inicio, adicionar_estado_saude_inicio)
+lista_pacientes.adicionar_paciente_head("Joao", 1, "Em coma")
 
-adicionar_nome_fim = input("Digite o nome do paciente: ")
-adicionar_id_fim = input("Digite o id do paciente: ")
-adicionar_estado_saude_fim = input("Digite o estado de saude do paciente: ")
-lista_pacientes.adicionar_paciente_tail(adicionar_nome_fim, adicionar_id_fim, adicionar_estado_saude_fim)
+lista_pacientes.adicionar_paciente_tail("Maria", 2, "Estavel")
 
-remover_pacientes = input("Digite o id do paciente que deseja remover: ")
-lista_pacientes.remover_paciente(remover_pacientes)
+lista_pacientes.remover_paciente(2)
 
 print(lista_pacientes)
